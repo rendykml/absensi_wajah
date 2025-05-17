@@ -5,12 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Absensi Wajah</title>
   <link rel="stylesheet" href="style.css" />
- 
+  <style>
+    video, canvas {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      
+    }
+    .video-container {
+      position: relative;
+      width: fit-content;
+    }
+    .saved-faces {
+      margin-top: 20px;
+    }
+    .face-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .face-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      width: 200px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .face-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .face-card .info {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Absensi Waja</h1>
+  <h1>Absensi Wajah</h1>
 
-  <video id="video" autoplay muted></video>
+  <div class="video-container">
+    <video id="video" width="640" height="480" autoplay muted></video>
+    <canvas id="overlay" width="640" height="480"></canvas>
+  </div>
 
   <div class="controls">
     <input type="text" id="namaInput" placeholder="Masukkan nama" />
@@ -20,9 +59,13 @@
 
   <h2>Riwayat Absensi</h2>
   <ul id="absensiLog"></ul>
+  
+  <div class="saved-faces">
+    <h2>Wajah Tersimpan</h2>
+    <div id="faceGallery" class="face-gallery"></div>
+  </div>
 
   <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-  
   <script defer src="script.js"></script>
 </body>
 </html>
